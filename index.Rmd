@@ -11,12 +11,14 @@ links-as-notes: FALSE
 colorlinks: TRUE
 fontsize: 12pt
 url: https\://oxfordihtm.github.io/seychelles-statistics-handbook
-github-repo: oxfordIHTM/seychelles-statistics-handbook
-cover-image: images/MOH_LOGONEW.png
+github-repo: OxfordIHTM/seychelles-statistics-handbook
+cover-image: images/moh_logo_new.png
 description: "A handbook for the Seychelles-Oxford Partnership project on statistical training to strengthen evidence-based research capacity in the Seychelles"
 ---
 
 # The Seychelles-Oxford Partnership Statistics Handbook {-}
 
-![](images/MOH_LOGONEW.png)
+<center>
+![](images/moh_logo_new.png)
+</center>
 
