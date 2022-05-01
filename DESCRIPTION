@@ -1,0 +1,19 @@
+Package: seychelles-statistics-handbook
+Title: The Seychelles-Oxford Partnership Statistics Handbook
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Ernest", "Guevarra", 
+       email = "ernest@guevarra.io", 
+       role = c("aut", "cre")
+    ),
+    person(
+      "Aronrag", "Meeyai", role = "aut"
+    ),
+    person(
+      "Proochista", "Ariana", role = "aut"
+    )
+  )
+Depends: R (>= 4.2.0)
+Imports:
+    bookdown

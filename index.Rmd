@@ -1,0 +1,22 @@
+--- 
+title: "The Seychelles-Oxford Partnership Statistics Handbook"
+author: "The Republic of Seychelles Ministry of Health and University of Oxford"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: ["book.bib"]
+biblio-style: "apalike"
+link-citations: TRUE
+links-as-notes: FALSE
+colorlinks: TRUE
+fontsize: 12pt
+url: https\://oxfordihtm.github.io/seychelles-statistics-handbook
+github-repo: oxfordIHTM/seychelles-statistics-handbook
+cover-image: images/MOH_LOGONEW.png
+description: "A handbook for the Seychelles-Oxford Partnership project on statistical training to strengthen evidence-based research capacity in the Seychelles"
+---
+
+# The Seychelles-Oxford Partnership Statistics Handbook {-}
+
+![](images/MOH_LOGONEW.png)
+
