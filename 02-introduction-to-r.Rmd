@@ -1,53 +1,5 @@
 # Introduction to R and RStudio {#intro-r}
 
-## Installing R and RStudio {#install-r}
-
-Steps in installing R and RStudio (and other required software) for Windows machines
-
-Following is a simple guide to installing R and RStudio and other required software on Windows machines for the specific purpose of the Seychelles Ministry of Health training.
-
-### 1. Install R
-
-Important that R is installed first. R is the main software and is needed for RStudio to work properly. R should always be installed first.
-
-Go to https://cran.r-project.org
-
-Click on link that says Download R for Windows
-
-Then click on the link that says install R for the first time
-
-Then click on Download R-4.2.0 for Windows. This will start the download process.
-
-Once downloaded, go to the exe file in your Downloads folder, double-click and follow all the install prompts, selecting recommended options all the time
-
-### 2. Install RStudio
-
-This step requires that step 1 has been done and was successful.
-
-Go to https://www.rstudio.com/products/rstudio/download/
-
-Select the download specific for your machine. If Windows - use this link to download - https://download1.rstudio.org/desktop/windows/RStudio-2022.02.2-485.exe
-
-Once downloaded, double-click on exe file downloaded to your Downloads folder and then follow all install prompts, always selecting recommended options.
-
-### 3. Install Rtools
-
-For the things that I will be teaching you, we will need to expand the installation of R by installing the Rtools software from R.
-
-The download link is https://cran.r-project.org/bin/windows/Rtools/rtools42/rtools.html if you have installed R version 4.2.0
-
-Once you have downloaded the exe file, double-click on the exe file and follow all install prompts. Choose all the recommended options.
-
-### 4. Install Git for Windows
-
-For the things that I will be teaching you, we will need to install Git for Windows.
-
-If your machine is 64-bit machine (most likely the case if your computer is new and running Windows 10 or later) - use this download link - https://github.com/git-for-windows/git/releases/download/v2.36.0.windows.1/Git-2.36.0-64-bit.exe
-
-If your machine is 32-bit machine - use this link - https://github.com/git-for-windows/git/releases/download/v2.36.0.windows.1/Git-2.36.0-32-bit.exe
-
-Once you have downloaded the exe file, double-click it and then follow all install prompts. Choose all recommended options.
-
 ## What is R? {#what-r}
 
 `R` is a system for data manipulation, calculation, and graphics. It provides:
@@ -94,5 +46,6 @@ RStudio is available in open source and commercial editions and runs on the desk
 
 <p><a href="https://www.rstudio.com/products/rstudio/?wvideo=520zbd3tij"><img src="https://embed-fastly.wistia.com/deliveries/260e6e980f526abaedf8ef3378270c899da74f08.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button=1&amp;image_play_button_color=71a5d4e0" width="400" height="225" style="width: 400px; height: 225px;"></a></p><p><a href="https://www.rstudio.com/products/rstudio/?wvideo=520zbd3tij">RStudio IDE Overview</a></p>
 
+<!---
 ## Why use RStudio {#why-rstudio}
-
+--->
