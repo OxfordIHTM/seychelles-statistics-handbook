@@ -1,0 +1,16 @@
+introduction
+intro-r
+install-r
+install-r-1
+install-rstudio
+install-rtools
+install-git-for-windows
+what-r
+why-r
+what-rstudio
+why-rstudio
+basics-r
+access-data-r
+section
+extend-r
+create-manipulate-r
