@@ -13,3 +13,12 @@ access-data-r
 section
 extend-r
 create-manipulate-r
+clone-repository
+copy-the-repository-url-of-the-repository-you-want-to-clone-from-github
+go-to-rstudio-and-create-new-project
+choose-version-control
+select-git
+setup-repository-settings
+commit-and-push
+click-on-commit-in-the-git-tab-on-rstudio
+getting-changes-saved-and-push-to-github
