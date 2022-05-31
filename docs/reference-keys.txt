@@ -11,8 +11,8 @@ what-rstudio
 basics-r
 access-data-r
 section
-extend-r
 create-manipulate-r
+extend-r
 write-functions
 clone-repository
 copy-the-repository-url-of-the-repository-you-want-to-clone-from-github
@@ -24,3 +24,8 @@ commit-and-push
 click-on-commit-in-the-git-tab-on-rstudio
 getting-changes-saved-and-push-to-github
 portable-reproducible
+step-1-create-a-new-rstudio-project
+step-2-create-an-r-file-called-packages.r
+step-3-create-placeholder-directories-for-different-components-of-workflow
+step-4-create-the-target-script-file-_targets.r
+step-5-edit-the-_targets.r-script-file
