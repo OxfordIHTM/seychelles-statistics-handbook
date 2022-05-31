@@ -9,9 +9,9 @@ what-r
 why-r
 what-rstudio
 basics-r
-access-data-r
-section
+summary
 create-manipulate-r
+summary-1
 extend-r
 write-functions
 clone-repository
