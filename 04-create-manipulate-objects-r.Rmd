@@ -1,4 +1,4 @@
-# Creating and manipulating objects in R {#create-manipulate-r}
+# Objects in R {#create-manipulate-r}
 
 In this exercise we will explore how to manipulate `R` objects and how to write functions that can manipulate and extract data and information from `R` objects and produce useful analyses.
 

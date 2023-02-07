@@ -44,8 +44,9 @@ RStudio is an **integrated development environment (IDE)** for R. It includes a 
 
 RStudio is available in open source and commercial editions and runs on the desktop (Windows, Mac, and Linux) or in a browser connected to RStudio Server or RStudio Workbench (Debian/Ubuntu, Red Hat/CentOS, and SUSE Linux).
 
+<!---
 <p><a href="https://www.rstudio.com/products/rstudio/?wvideo=520zbd3tij"><img src="https://embed-fastly.wistia.com/deliveries/260e6e980f526abaedf8ef3378270c899da74f08.jpg?image_play_button_size=2x&amp;image_crop_resized=960x540&amp;image_play_button=1&amp;image_play_button_color=71a5d4e0" width="400" height="225" style="width: 400px; height: 225px;"></a></p><p><a href="https://www.rstudio.com/products/rstudio/?wvideo=520zbd3tij">RStudio IDE Overview</a></p>
 
-<!---
+
 ## Why use RStudio {#why-rstudio}
 --->
