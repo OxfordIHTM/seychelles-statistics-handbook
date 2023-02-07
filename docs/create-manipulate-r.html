@@ -242,11 +242,8 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 5</span> Objects in R<a href="create-manipulate-r.html#create-manipulate-r" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>In this exercise we will explore how to manipulate <code>R</code> objects and how to write functions that can manipulate and extract data and information from <code>R</code> objects and produce useful analyses.</p>
 <p>Before we go any further we should start <code>R</code> and retrieve a dataset:</p>
-<p> </p>
 <div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="create-manipulate-r.html#cb125-1" aria-hidden="true" tabindex="-1"></a>salex <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">&quot;data/salex.dat&quot;</span>, <span class="at">header =</span> <span class="cn">TRUE</span>, <span class="at">na.strings =</span> <span class="st">&quot;9&quot;</span>)</span></code></pre></div>
-<p> </p>
 <p>Missing values are coded as 9 throughout this dataset so we can use the <code>na.strings</code> parameter of the <code>read.table()</code> function to replace all 9’s with the special <code>NA</code> code when we retrieve the dataset. Check that this works by examining the <code>salex</code> data.frame:</p>
-<p> </p>
 <div class="sourceCode" id="cb126"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb126-1"><a href="create-manipulate-r.html#cb126-1" aria-hidden="true" tabindex="-1"></a>salex</span>
 <span id="cb126-2"><a href="create-manipulate-r.html#cb126-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(salex)</span></code></pre></div>
 <pre><code>##   ILL HAM BEEF EGGS MUSHROOM PEPPER PORKPIE PASTA RICE LETTUCE TOMATO COLESLAW
@@ -266,7 +263,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>##  [1] &quot;ILL&quot;       &quot;HAM&quot;       &quot;BEEF&quot;      &quot;EGGS&quot;      &quot;MUSHROOM&quot;  &quot;PEPPER&quot;   
 ##  [7] &quot;PORKPIE&quot;   &quot;PASTA&quot;     &quot;RICE&quot;      &quot;LETTUCE&quot;   &quot;TOMATO&quot;    &quot;COLESLAW&quot; 
 ## [13] &quot;CRISPS&quot;    &quot;PEACHCAKE&quot; &quot;CHOCOLATE&quot; &quot;FRUIT&quot;     &quot;TRIFLE&quot;    &quot;ALMONDS&quot;</code></pre>
-<p> </p>
 <p>This data comes from a food-borne outbreak. On Saturday 17th October 1992, eighty-two people attended a buffet meal at a sports club. Within fourteen to twenty-four hours, fifty-one of the participants developed diarrhoea, with nausea, vomiting, abdominal pain and fever.</p>
 <p>The columns in the dataset are as follows:</p>
 <table style="width:54%;">
@@ -352,75 +348,51 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <p>Data is available for seventy-seven of the eighty-two people who attended the sports club buffet. All of the variables are coded 1=yes, 2=no.</p>
 <div style="page-break-after: always;"></div>
 <p>We can use the <code>attach()</code> function to make it easier to access our data:</p>
-<p> </p>
 <div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="create-manipulate-r.html#cb129-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attach</span>(salex)</span></code></pre></div>
-<p> </p>
 <p>The two-by-two table is a basic epidemiological tool. In analysing data from a food-borne outbreak collected as a retrospective cohort study, for example, we would tabulate each exposure (suspect foodstuffs) against the outcome (illness) and calculate risk ratios and confidence intervals. <code>R</code> has no explicit function to calculate risk ratios from two-by-two tables but we can easily write one ourselves.</p>
 <p>The first step in writing such a function would be to create the two-by-two table. This can be done with the <code>table()</code> function. We will use a table of <code>HAM</code> by <code>ILL</code> as an illustration:</p>
-<p> </p>
 <div class="sourceCode" id="cb130"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb130-1"><a href="create-manipulate-r.html#cb130-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(HAM, ILL)</span></code></pre></div>
-<p> </p>
 <p>This command produces the following output:</p>
-<p> </p>
 <pre><code>##    ILL
 ## HAM  1  2
 ##   1 46 17
 ##   2  5  9</code></pre>
-<p> </p>
 <p>We can manipulate the output directly but it is easier if we instruct <code>R</code> to save the output of the <code>table()</code> function in an object:</p>
-<p> </p>
 <div class="sourceCode" id="cb132"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb132-1"><a href="create-manipulate-r.html#cb132-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">table</span>(HAM, ILL)</span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>The <code>tab</code> object contains the output of the <code>table()</code> function:</p>
-<p> </p>
 <div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="create-manipulate-r.html#cb133-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
 <pre><code>##    ILL
 ## HAM  1  2
 ##   1 46 17
 ##   2  5  9</code></pre>
-<p> </p>
 <p>As it is stored in an object we can examine its contents on an item by item basis.</p>
 <p>The <code>tab</code> object is an object of class <code>table</code>:</p>
-<p> </p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="create-manipulate-r.html#cb135-1" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(tab)</span></code></pre></div>
 <pre><code>## [1] &quot;table&quot;</code></pre>
-<p> </p>
 <p>We can extract data from a table object by using indices or row and column co-ordinates:</p>
-<p> </p>
 <div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="create-manipulate-r.html#cb137-1" aria-hidden="true" tabindex="-1"></a>tab[<span class="dv">1</span>,<span class="dv">1</span>]</span>
 <span id="cb137-2"><a href="create-manipulate-r.html#cb137-2" aria-hidden="true" tabindex="-1"></a>tab[<span class="dv">1</span>,<span class="dv">2</span>]</span>
 <span id="cb137-3"><a href="create-manipulate-r.html#cb137-3" aria-hidden="true" tabindex="-1"></a>tab[<span class="dv">2</span>,<span class="dv">1</span>]</span></code></pre></div>
 <pre><code>## [1] 46</code></pre>
 <pre><code>## [1] 17</code></pre>
 <pre><code>## [1] 5</code></pre>
-<p> </p>
 <p>The numbers in the square brackets refer to the <strong><em>position</em></strong> (as row and column co-ordinates) of the data item in the table <strong><em>not</em></strong> the <strong><em>values</em></strong> of the variables. We can extract data using the values of the row and column variables by enclosing the index values in double quotes (“). For example:</p>
-<p> </p>
 <div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="create-manipulate-r.html#cb141-1" aria-hidden="true" tabindex="-1"></a>tab[<span class="st">&quot;1&quot;</span>,<span class="st">&quot;1&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] 46</code></pre>
 <div style="page-break-after: always;"></div>
 <p>The two methods of extracting data may be combined. For example:</p>
-<p> </p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="create-manipulate-r.html#cb143-1" aria-hidden="true" tabindex="-1"></a>tab[<span class="dv">1</span>,<span class="st">&quot;1&quot;</span>]</span></code></pre></div>
 <pre><code>## [1] 46</code></pre>
-<p> </p>
 <p>We can calculate a risk ratio using the extracted data:</p>
-<p> </p>
 <div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="create-manipulate-r.html#cb145-1" aria-hidden="true" tabindex="-1"></a>(tab[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">/</span>(tab[<span class="dv">1</span>,<span class="dv">1</span>]<span class="sc">+</span>tab[<span class="dv">1</span>,<span class="dv">2</span>]))<span class="sc">/</span>(tab[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">/</span>(tab[<span class="dv">2</span>,<span class="dv">1</span>]<span class="sc">+</span>tab[<span class="dv">2</span>,<span class="dv">2</span>]))</span></code></pre></div>
-<p> </p>
 <p>Which returns a risk ratio of</p>
-<p> </p>
 <pre><code>## [1] 2.044444</code></pre>
-<p> </p>
 <p>This is a tedious calculation to have to type in every time you need to calculate a risk ratio from a two-by-two table. It would be better to have a function that calculates and displays the risk ratio automatically. Fortunately, <code>R</code> allows us to do just that.</p>
 <p>The <code>function()</code> function allows us to create new functions in <code>R</code>:</p>
-<p> </p>
 <div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="create-manipulate-r.html#cb147-1" aria-hidden="true" tabindex="-1"></a>tab2by2 <span class="ot">&lt;-</span> <span class="cf">function</span>(exposure, outcome) {}</span></code></pre></div>
-<p> </p>
 <p>This creates an empty function called <code>tab2by2</code> that expects two parameters called <code>exposure</code> and <code>outcome</code>. We could type the whole function in at the <code>R</code> command prompt but it is easier to use a text editor:</p>
-<p> </p>
 <div class="sourceCode" id="cb148"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb148-1"><a href="create-manipulate-r.html#cb148-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fix</span>(tab2by2)</span></code></pre></div>
-<p> </p>
 <p>This will start an editor with the empty <code>tab2by2()</code> function already loaded. We can now edit this function to make it do something useful:</p>
 <div style="page-break-after: always;"></div>
 <div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="create-manipulate-r.html#cb149-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(exposure, outcome)</span>
@@ -434,7 +406,6 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb149-9"><a href="create-manipulate-r.html#cb149-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(tab)</span>
 <span id="cb149-10"><a href="create-manipulate-r.html#cb149-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(rr) </span>
 <span id="cb149-11"><a href="create-manipulate-r.html#cb149-11" aria-hidden="true" tabindex="-1"></a>  }</span></code></pre></div>
-<p> </p>
 <p>Once you have made the changes shown above, check your work, save the file, and quit the editor.
 Before proceeding we should examine the <code>tab2by2()</code> function to make sure we understand what the function will do:</p>
 <ul>
@@ -447,47 +418,37 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 </ul>
 <div style="page-break-after: always;"></div>
 <p>Let’s try the <code>tab2by2()</code> function with our test data:</p>
-<p> </p>
 <div class="sourceCode" id="cb150"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb150-1"><a href="create-manipulate-r.html#cb150-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(HAM, ILL)</span></code></pre></div>
 <pre><code>##         outcome
 ## exposure  1  2
 ##        1 46 17
 ##        2  5  9
 ## [1] 2.044444</code></pre>
-<p> </p>
 <p>The <code>tab2by2()</code> function displays a table of <code>HAM</code> by <code>ILL</code> followed by the risk ratio calculated from the data in the table.</p>
 <p>Try producing another table:</p>
-<p> </p>
 <div class="sourceCode" id="cb152"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb152-1"><a href="create-manipulate-r.html#cb152-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(PASTA, ILL)</span></code></pre></div>
 <pre><code>##         outcome
 ## exposure  1  2
 ##        1 25  3
 ##        2 26 23
 ## [1] 1.682692</code></pre>
-<p> </p>
 <p>Have a look at the <code>R</code> objects available to you:</p>
-<p> </p>
 <div class="sourceCode" id="cb154"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb154-1"><a href="create-manipulate-r.html#cb154-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;fem&quot;     &quot;salex&quot;   &quot;tab&quot;     &quot;tab2by2&quot;</code></pre>
-<p> </p>
 <p>Note that there are no <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, or <code>rr</code> objects.</p>
 <div style="page-break-after: always;"></div>
 <p>Examine the <code>tab</code> object:</p>
-<p> </p>
 <div class="sourceCode" id="cb156"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb156-1"><a href="create-manipulate-r.html#cb156-1" aria-hidden="true" tabindex="-1"></a>tab</span></code></pre></div>
 <pre><code>##    ILL
 ## HAM  1  2
 ##   1 46 17
 ##   2  5  9</code></pre>
-<p> </p>
 <p>This is the table of <code>HAM</code> by <code>ILL</code> that you created earlier <strong><em>not</em></strong> the table of <code>PASTA</code> by <code>ILL</code> that was created by the <code>tab2by2()</code> function.</p>
 <p>The <code>tab</code>, <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, and <code>rr</code> objects in the <code>tab2by2()</code> function are local to that function and do not change anything outside of that function. This means that the <code>tab</code> object inside the function is independent of any object of the same name outside of the function.</p>
 <p>When a function completes its work, all of the objects that are local to that function are automatically removed. This is useful as it means that you can use object names inside functions that will not interfere with objects of the same name that are stored elsewhere. It also means that you do not clutter up the <code>R</code> workspace with temporary objects.</p>
 <p>Just to prove that <code>tab</code> in the <code>tab2by2()</code> function exists only in the <code>tab2by2()</code> function we can delete the tab object from the <code>R</code> workspace:</p>
-<p> </p>
 <div class="sourceCode" id="cb158"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb158-1"><a href="create-manipulate-r.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(tab)</span></code></pre></div>
 <p>Now try another call to the <code>tab2by2()</code> function:</p>
-<p> </p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="create-manipulate-r.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(FRUIT, ILL)</span></code></pre></div>
 <pre><code>##         outcome
 ## exposure  1  2
@@ -496,17 +457,12 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 ## [1] 0.2897959</code></pre>
 <div style="page-break-after: always;"></div>
 <p>Now list the <code>R</code> objects available to you:</p>
-<p> </p>
 <div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="create-manipulate-r.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
 <pre><code>## [1] &quot;fem&quot;     &quot;salex&quot;   &quot;tab2by2&quot;</code></pre>
-<p> </p>
 <p>Note that there are no <code>tab</code>, <code>a</code>, <code>b</code>, <code>c</code>, <code>d</code>, or <code>rr</code> objects.</p>
 <p>The <code>tab2by2()</code> function is very limited. It only displays a table and calculates and displays a simple ratio. A more useful function would also calculate and display a confidence interval for the risk ratio. This is what we will do now. Use the <code>fix()</code> function to edit the <code>tab2by2()</code> function:</p>
-<p> </p>
 <div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="create-manipulate-r.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fix</span>(tab2by2)</span></code></pre></div>
-<p> </p>
 <p>We can now edit this function to calculate and display a 95% confidence interval for the risk ratio.</p>
-<p> </p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb164-1"><a href="create-manipulate-r.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(exposure, outcome) {</span>
 <span id="cb164-2"><a href="create-manipulate-r.html#cb164-2" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(exposure, outcome)</span>
 <span id="cb164-3"><a href="create-manipulate-r.html#cb164-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> tab[<span class="dv">1</span>,<span class="dv">1</span>]</span>
@@ -524,11 +480,8 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 <span id="cb164-15"><a href="create-manipulate-r.html#cb164-15" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>Once you have made the changes shown above, check your work, save the file, and quit the editor. We should test our revised function:</p>
-<p> </p>
 <div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="create-manipulate-r.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(EGGS, ILL)</span></code></pre></div>
-<p> </p>
 <p>which produces the following output:</p>
-<p> </p>
 <pre><code>##         outcome
 ## exposure  1  2
 ##        1 40  6
@@ -536,9 +489,7 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 ## [1] 2.608696
 ## [1] 1.553564
 ## [1] 4.38044</code></pre>
-<p> </p>
 <p>The function works but the output could be improved. Use the <code>fix()</code> function to edit the <code>tab2by2()</code> function:</p>
-<p> </p>
 <div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="create-manipulate-r.html#cb167-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(exposure, outcome) {</span>
 <span id="cb167-2"><a href="create-manipulate-r.html#cb167-2" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(exposure, outcome)</span>
 <span id="cb167-3"><a href="create-manipulate-r.html#cb167-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> tab[<span class="dv">1</span>,<span class="dv">1</span>]</span>
@@ -553,15 +504,11 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 <span id="cb167-12"><a href="create-manipulate-r.html#cb167-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">RR :&quot;</span>, rr,</span>
 <span id="cb167-13"><a href="create-manipulate-r.html#cb167-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;</span><span class="sc">\n</span><span class="st">95% CI :&quot;</span>, lci.rr, uci.rr, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span>
 <span id="cb167-14"><a href="create-manipulate-r.html#cb167-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p> </p>
 <p>Once you have made the changes shown above, save the file and quit the editor.</p>
 <div style="page-break-after: always;"></div>
 <p>Now we can test our function again:</p>
-<p> </p>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb168-1"><a href="create-manipulate-r.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(EGGS, ILL)</span></code></pre></div>
-<p> </p>
 <p>Which produces the following output:</p>
-<p> </p>
 <pre><code>##         outcome
 ## exposure  1  2
 ##        1 40  6
@@ -569,9 +516,7 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 ## 
 ## RR : 2.608696 
 ## 95% CI : 1.553564 4.38044</code></pre>
-<p> </p>
 <p>The <code>tab2by2()</code> function displays output but does not behave like a standard <code>R</code> function in the sense that you cannot save the results of the <code>tab2by2()</code> function into an object:</p>
-<p> </p>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb170-1"><a href="create-manipulate-r.html#cb170-1" aria-hidden="true" tabindex="-1"></a>test2by2 <span class="ot">&lt;-</span> <span class="fu">tab2by2</span>(EGGS, ILL)</span></code></pre></div>
 <pre><code>##         outcome
 ## exposure  1  2
@@ -580,37 +525,29 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 ## 
 ## RR : 2.608696 
 ## 95% CI : 1.553564 4.38044</code></pre>
-<p> </p>
 <p>displays output but does not save anything in the <code>test2by2</code> object:</p>
-<p> </p>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb172-1"><a href="create-manipulate-r.html#cb172-1" aria-hidden="true" tabindex="-1"></a>test2by2</span></code></pre></div>
 <pre><code>## NULL</code></pre>
 <div style="page-break-after: always;"></div>
 <p>The returned value (<code>NULL</code>) means that <code>test2by2</code> is an empty object. We will not worry about this at the moment as the <code>tab2by2()</code> function is good-enough for our current purposes. In Exercise 6 we will explore how to make our own functions behave like standard <code>R</code> functions.</p>
 <p>We will now add the calculation of the odds ratio and its 95% confidence interval to the <code>tab2by2()</code> function using the <code>fix()</code> function.</p>
 <p>There are two ways of doing this. We could either calculate the odds ratio from the table and use (e.g.) the method of Woolf to calculate the confidence interval:</p>
-<p> </p>
 <div class="sourceCode" id="cb174"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb174-1"><a href="create-manipulate-r.html#cb174-1" aria-hidden="true" tabindex="-1"></a>or <span class="ot">&lt;-</span> (a <span class="sc">/</span> b) <span class="sc">/</span> (c <span class="sc">/</span> d)</span>
 <span id="cb174-2"><a href="create-manipulate-r.html#cb174-2" aria-hidden="true" tabindex="-1"></a>se.log.or <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">/</span> a <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> b <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> c <span class="sc">+</span> <span class="dv">1</span> <span class="sc">/</span> d)</span>
 <span id="cb174-3"><a href="create-manipulate-r.html#cb174-3" aria-hidden="true" tabindex="-1"></a>lci.or <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">log</span>(or) <span class="sc">-</span> <span class="fl">1.96</span> <span class="sc">*</span> se.log.or)</span>
 <span id="cb174-4"><a href="create-manipulate-r.html#cb174-4" aria-hidden="true" tabindex="-1"></a>uci.or <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">log</span>(or) <span class="sc">+</span> <span class="fl">1.96</span> <span class="sc">*</span> se.log.or)</span>
 <span id="cb174-5"><a href="create-manipulate-r.html#cb174-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">OR     :&quot;</span>, or,</span>
 <span id="cb174-6"><a href="create-manipulate-r.html#cb174-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;</span><span class="sc">\n</span><span class="st">95% CI :&quot;</span>, lci.or, uci.or, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<p> </p>
 <p>or use the output of the <code>fisher.test()</code> function:</p>
-<p> </p>
 <div class="sourceCode" id="cb175"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb175-1"><a href="create-manipulate-r.html#cb175-1" aria-hidden="true" tabindex="-1"></a>ft <span class="ot">&lt;-</span> <span class="fu">fisher.test</span>(tab)</span>
 <span id="cb175-2"><a href="create-manipulate-r.html#cb175-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">OR     :&quot;</span>, ft<span class="sc">$</span>estimate,</span>
 <span id="cb175-3"><a href="create-manipulate-r.html#cb175-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;</span><span class="sc">\n</span><span class="st">95% CI :&quot;</span>, ft<span class="sc">$</span>conf.int, <span class="st">&quot;</span><span class="sc">\n</span><span class="st">&quot;</span>)</span></code></pre></div>
-<p> </p>
 <p>Note that we can refer to components of a function’s output using the same syntax as when we refer to columns in a data.frame (e.g. <code>ft$estimate</code> to examine the estimate of the odds ratio from the <code>fisher.test()</code> function stored in the object <code>ft</code>).</p>
 <p>The names of elements in the output of a standard function such as <code>fisher.test()</code> can be found in the documentation or the help system. For example:</p>
-<p> </p>
 <div class="sourceCode" id="cb176"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb176-1"><a href="create-manipulate-r.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(fisher.test)</span></code></pre></div>
 <div style="page-break-after: always;"></div>
 <p>Output elements are listed under the <code>Value</code> heading.</p>
 <p>Revise the <code>tab2by2()</code> function to include the calculation of the odds ratio and the 95% confidence interval. The revised function will look something like this:</p>
-<p> </p>
 <div class="sourceCode" id="cb177"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb177-1"><a href="create-manipulate-r.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(exposure, outcome) {</span>
 <span id="cb177-2"><a href="create-manipulate-r.html#cb177-2" aria-hidden="true" tabindex="-1"></a>  tab <span class="ot">&lt;-</span> <span class="fu">table</span>(exposure, outcome)</span>
 <span id="cb177-3"><a href="create-manipulate-r.html#cb177-3" aria-hidden="true" tabindex="-1"></a>  a <span class="ot">&lt;-</span> tab[<span class="dv">1</span>,<span class="dv">1</span>]</span>
@@ -638,12 +575,10 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 <span id="cb177-25"><a href="create-manipulate-r.html#cb177-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cat</span>(<span class="st">&quot;</span><span class="sc">\n</span><span class="st">MLE Odds Ratio    :&quot;</span>, ft<span class="sc">$</span>estimate,</span>
 <span id="cb177-26"><a href="create-manipulate-r.html#cb177-26" aria-hidden="true" tabindex="-1"></a>      <span class="st">&quot;</span><span class="sc">\n</span><span class="st">95% CI            :&quot;</span>,  ft<span class="sc">$</span>conf.int, <span class="st">&quot;</span><span class="sc">\n\n</span><span class="st">&quot;</span>)</span>
 <span id="cb177-27"><a href="create-manipulate-r.html#cb177-27" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p> </p>
 <p>Once you have made the changes shown above, check your work, save the file, and quit the editor.</p>
 <div style="page-break-after: always;"></div>
 <p>Test the <code>tab2by2()</code> function when you have added the calculation of the odds ratio and its 95% confidence interval.</p>
 <p>Now that we have a function that will calculate risk ratios and odds ratios with confidence intervals from a two- by-two table we can use it to analyse the <code>salex</code> data:</p>
-<p> </p>
 <div class="sourceCode" id="cb178"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb178-1"><a href="create-manipulate-r.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(HAM, ILL)</span>
 <span id="cb178-2"><a href="create-manipulate-r.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(BEEF, ILL)</span>
 <span id="cb178-3"><a href="create-manipulate-r.html#cb178-3" aria-hidden="true" tabindex="-1"></a><span class="fu">tab2by2</span>(EGGS, ILL)</span>
@@ -899,16 +834,11 @@ Before proceeding we should examine the <code>tab2by2()</code> function to make 
 ## 
 ## MLE Odds Ratio    : 0.505905 
 ## 95% CI            : 0.06170211 4.141891</code></pre>
-<p> </p>
 <p>Make a note of any positive associations (i.e. with a risk ratio &gt; 1 with a 95% confidence intervals that does not include one). We will use these for the next exercise when we will use logistic regression to analyse this data.</p>
 <p>Save the <code>tab2by2()</code> function:</p>
-<p> </p>
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="create-manipulate-r.html#cb196-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(tab2by2, <span class="at">file =</span> <span class="st">&quot;tab2by2.r&quot;</span>)</span></code></pre></div>
-<p> </p>
 <p>We can now quit <code>R</code>:</p>
-<p> </p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb197-1"><a href="create-manipulate-r.html#cb197-1" aria-hidden="true" tabindex="-1"></a><span class="fu">q</span>()</span></code></pre></div>
-<p> </p>
 <p>For this exercise there is no need to save the workspace image so click the <strong>No</strong> or <strong>Don’t Save</strong> button (GUI) or enter <code>n</code> when prompted to save the workspace image (terminal).</p>
 <div id="summary-1" class="section level2 hasAnchor" number="5.1">
 <h2><span class="header-section-number">5.1</span> Summary<a href="create-manipulate-r.html#summary-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>

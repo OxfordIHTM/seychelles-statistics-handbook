@@ -362,15 +362,11 @@ In this exercise we will use \texttt{R} to read a dataset and produce some descr
 
 The first thing we will do, after starting \texttt{R}, is issue a command to retrieve an example dataset:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fem }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"data/fem.dat"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
-
-~
 
 This command illustrates some key things about the way \texttt{R} works.
 
@@ -378,8 +374,6 @@ We are instructing \texttt{R} to assign (using the \texttt{\textless{}-} operato
 called \texttt{fem}.
 
 The \texttt{fem} object will contain the data held in the file \texttt{fem.dat} as an \texttt{R} data.frame object:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -394,8 +388,6 @@ The \texttt{fem} object will contain the data held in the file \texttt{fem.dat} 
 \newpage
 
 You can inspect the contents of the \texttt{fem} data.frame (or any other \texttt{R} object) just by typing its name:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -413,11 +405,7 @@ You can inspect the contents of the \texttt{fem} data.frame (or any other \textt
 ## 6  6  44 90  NA   1   2   2    2  0.41
 \end{verbatim}
 
-~
-
 Note that the \texttt{fem} object is built from other objects. These are the named vectors (columns) in the dataset:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -429,11 +417,7 @@ Note that the \texttt{fem} object is built from other objects. These are the nam
 ## [1] "ID"   "AGE"  "IQ"   "ANX"  "DEP"  "SLP"  "SEX"  "LIFE" "WT"
 \end{verbatim}
 
-~
-
 The \texttt{{[}1{]}} displayed before the column names refers to the numbered position of the first name in the output. These positions are known as indexes and can be used to refer to individual items. For example:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -445,8 +429,6 @@ The \texttt{{[}1{]}} displayed before the column names refers to the numbered po
 ## [1] "ID"
 \end{verbatim}
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{names}\NormalTok{(fem)[}\DecValTok{8}\NormalTok{]}
@@ -456,8 +438,6 @@ The \texttt{{[}1{]}} displayed before the column names refers to the numbered po
 \begin{verbatim}
 ## [1] "LIFE"
 \end{verbatim}
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -473,8 +453,6 @@ The \texttt{{[}1{]}} displayed before the column names refers to the numbered po
 
 The data consist of 118 records:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{nrow}\NormalTok{(fem)}
@@ -485,11 +463,7 @@ The data consist of 118 records:
 ## [1] 118
 \end{verbatim}
 
-~
-
 each with nine variables:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -501,15 +475,9 @@ each with nine variables:
 ## [1] 9
 \end{verbatim}
 
-~
-
 for female psychiatric patients.
 
-~
-
 The columns in the dataset are:
-
-~
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.1528}}
@@ -537,8 +505,6 @@ Patient ID
 
 The first ten records of the \texttt{fem} data.frame are:
 
-~
-
 \begin{verbatim}
 ##    ID AGE  IQ ANX DEP SLP SEX LIFE    WT
 ## 1   1  39  94   2   2   2   1    1  2.23
@@ -553,11 +519,7 @@ The first ten records of the \texttt{fem} data.frame are:
 ## 10 10  33  92   2   2   2   1    1  0.36
 \end{verbatim}
 
-~
-
 You may check this by asking \texttt{R} to display all columns of the first ten records in the \texttt{fem} data.frame:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -583,19 +545,13 @@ You may check this by asking \texttt{R} to display all columns of the first ten 
 
 The space after the comma is optional. You can think of it as a \emph{placeholder} for where you would specify the indexes for columns you wanted to display. For example:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fem[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{]}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 displays the first ten rows and the second, third and fourth columns of the \texttt{fem} data.frame:
-
-~
 
 \begin{verbatim}
 ##    AGE  IQ ANX
@@ -611,13 +567,9 @@ displays the first ten rows and the second, third and fourth columns of the \tex
 ## 10  33  92   2
 \end{verbatim}
 
-~
-
 \texttt{NA} is a special value meaning \emph{not available} or \emph{missing}.
 
 You can access the contents of a single column by name:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -634,8 +586,6 @@ You can access the contents of a single column by name:
 ##  [91]  92  98  92  88  85  92  84  92  91  86  92  89 -99  96  97  92  92  98
 ## [109]  91  91  89  94  90  96  87  86  89 -99
 \end{verbatim}
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -653,8 +603,6 @@ The \texttt{\$} sign is used to separate the name of the data.frame and the name
 
 You can also access rows, columns, and individual cells by specifying row and column positions. For example, the \texttt{IQ} column is the third column in the \texttt{fem} data.frame:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fem[ ,}\DecValTok{3}\NormalTok{]}
@@ -671,8 +619,6 @@ You can also access rows, columns, and individual cells by specifying row and co
 ## [109]  91  91  89  94  90  96  87  86  89 -99
 \end{verbatim}
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fem[}\DecValTok{9}\NormalTok{, ]}
@@ -684,8 +630,6 @@ You can also access rows, columns, and individual cells by specifying row and co
 ## 9  9  35 -99   3   2   2   1    1 -0.55
 \end{verbatim}
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{fem[}\DecValTok{9}\NormalTok{,}\DecValTok{3}\NormalTok{]}
@@ -696,12 +640,8 @@ You can also access rows, columns, and individual cells by specifying row and co
 ## [1] -99
 \end{verbatim}
 
-~
-
 There are missing values in the \texttt{IQ} column which are all coded as \textbf{-99}. Before proceeding we must set these to
 the special \texttt{NA} value:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -709,15 +649,11 @@ the special \texttt{NA} value:
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 The term inside the square brackets is also an index. This type of index is used to refer to subsets of data held in an object that meet a particular condition. In this case we are instructing \texttt{R} to set the contents of the \texttt{IQ} variable to \texttt{NA} if the contents of the \texttt{IQ} variable is \textbf{-99}.
 
 \newpage
 
 Check that this has worked:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -735,11 +671,7 @@ Check that this has worked:
 ## [109]  91  91  89  94  90  96  87  86  89  NA
 \end{verbatim}
 
-~
-
 We can now compare the groups who have and have not considered suicide. For example:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -747,19 +679,13 @@ We can now compare the groups who have and have not considered suicide. For exam
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Look at the help for the \texttt{by()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{help}\NormalTok{(by)}
 \end{Highlighting}
 \end{Shaded}
-
-~
 
 Note that you may use \texttt{?by} as a shortcut for \texttt{help(by)}.
 
@@ -769,19 +695,13 @@ data.frame (in this case \texttt{fem\$IQ}) split by the value of another variabl
 It can be tedious to always have to specify a data.frame each time we want to use a particular variable. We can
 fix this problem by `attaching' the data.frame:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{attach}\NormalTok{(fem)}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 We can now refer to the columns in the \texttt{fem} data.frame without having to specify the name of the data.frame. This time we will produce summary statistics for \texttt{WT} by \texttt{LIFE}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -799,11 +719,7 @@ We can now refer to the columns in the \texttt{fem} data.frame without having to
 ## -1.6800 -0.4500  0.6400  0.6404  1.5000  2.9500       7
 \end{verbatim}
 
-~
-
 We can view the same data as a box and whisker plot:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -828,8 +744,6 @@ We can add axis labels and a title to the graph:
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-30-1} \end{center}
 
-~
-
 A more descriptive title might be ``Weight Change BY Considered Suicide''.
 
 The groups do not seem to differ much in their medians and the distributions appear to be reasonably symmetrical about their medians with a similar spread of values.
@@ -845,8 +759,6 @@ We can look at the distribution as histograms:
 \end{Shaded}
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-31-1} \end{center}
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -868,8 +780,6 @@ and check the assumption of normality using quantile-quantile plots:
 \end{Shaded}
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-33-1} \end{center}
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -898,8 +808,6 @@ or by using a formal test:
 ## W = 0.98038, p-value = 0.4336
 \end{verbatim}
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{shapiro.test}\NormalTok{(WT[LIFE }\SpecialCharTok{==} \DecValTok{2}\NormalTok{])}
@@ -914,11 +822,7 @@ or by using a formal test:
 ## W = 0.97155, p-value = 0.3292
 \end{verbatim}
 
-~
-
 Remember that we can use the \texttt{by()} function to apply a function to a data.frame, including statistical functions such as \texttt{shapiro.test()}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -947,8 +851,6 @@ Remember that we can use the \texttt{by()} function to apply a function to a dat
 
 We can also test whether the variances differ significantly using \emph{Bartlett's test} for the homogeneity of variances:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{bartlett.test}\NormalTok{(WT, LIFE)}
@@ -963,13 +865,9 @@ We can also test whether the variances differ significantly using \emph{Bartlett
 ## Bartlett's K-squared = 0.32408, df = 1, p-value = 0.5692
 \end{verbatim}
 
-~
-
 There is no significant difference between the two variances.
 
 Many functions in \texttt{R} have a \emph{formula interface} that may be used to specify multiple variables and the relations between multiple variables. We could have used the formula interface with the \texttt{bartlett.test()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -985,11 +883,7 @@ Many functions in \texttt{R} have a \emph{formula interface} that may be used to
 ## Bartlett's K-squared = 0.32408, df = 1, p-value = 0.5692
 \end{verbatim}
 
-~
-
 Having checked the normality and homogeneity of variance assumptions we can proceed to carry out a \texttt{t-test}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1011,13 +905,9 @@ Having checked the normality and homogeneity of variance assumptions we can proc
 ##       0.7867213       0.6404444
 \end{verbatim}
 
-~
-
 There is no evidence that the two groups differ in weight change in the previous six months.
 
 We could still have performed a \texttt{t-test} if the variances were not homogenous by setting the \textbf{var.equal} parameter of the \texttt{t.test()} function to \textbf{FALSE}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1039,11 +929,7 @@ We could still have performed a \texttt{t-test} if the variances were not homoge
 ##       0.7867213       0.6404444
 \end{verbatim}
 
-~
-
 or performed a non-parametric test:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1064,8 +950,6 @@ or performed a non-parametric test:
 
 An alternative, and more general, non-parametric test is:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{kruskal.test}\NormalTok{(WT }\SpecialCharTok{\textasciitilde{}}\NormalTok{ LIFE)}
@@ -1080,11 +964,7 @@ An alternative, and more general, non-parametric test is:
 ## Kruskal-Wallis chi-squared = 0.54521, df = 1, p-value = 0.4603
 \end{verbatim}
 
-~
-
 We can use the \texttt{table()} function to examine the differences in depression between the two groups:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1100,11 +980,7 @@ We can use the \texttt{table()} function to examine the differences in depressio
 ##   3 16  1
 \end{verbatim}
 
-~
-
 The two distributions look very different from each other. We can test this using a chi-square test on the table:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1124,8 +1000,6 @@ The two distributions look very different from each other. We can test this usin
 
 Note that we passed the output of the \texttt{table()} function directly to the \texttt{chisq.test()} function. We could have saved the table as an object first and then passed the object to the \texttt{chisq.test()} function:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tab }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(DEP, LIFE)}
@@ -1141,11 +1015,7 @@ Note that we passed the output of the \texttt{table()} function directly to the 
 ## X-squared = 43.876, df = 2, p-value = 2.968e-10
 \end{verbatim}
 
-~
-
 The \texttt{tab} object contains the output of the \texttt{table()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1171,11 +1041,7 @@ The \texttt{tab} object contains the output of the \texttt{table()} function:
 ##   3 16  1
 \end{verbatim}
 
-~
-
 We can pass this table object to another function. For example:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1192,11 +1058,7 @@ We can pass this table object to another function. For example:
 ## alternative hypothesis: two.sided
 \end{verbatim}
 
-~
-
 When we are finished with the tab object we can delete it using the \texttt{rm()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1204,11 +1066,7 @@ When we are finished with the tab object we can delete it using the \texttt{rm()
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 You can see a list of available objects using the \texttt{ls()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1220,13 +1078,9 @@ You can see a list of available objects using the \texttt{ls()} function:
 ## [1] "fem"
 \end{verbatim}
 
-~
-
 This should just show the \texttt{fem} object.
 
 We can examine the association between loss of interest in sex and considering suicide in the same way:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1266,19 +1120,13 @@ We can examine the association between loss of interest in sex and considering s
 
 Note that with a two-by-two table the \texttt{fisher.test()} function produces an estimate of, and confidence intervals for, the odds ratio. Again, we will delete the \texttt{tab} object:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{rm}\NormalTok{(tab)}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 We could have performed the Fisher exact test without creating the tab object by passing the output of the \texttt{table()} function directly to the \texttt{fisher.test()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1300,13 +1148,9 @@ We could have performed the Fisher exact test without creating the tab object by
 ##   3.620646
 \end{verbatim}
 
-~
-
 Choose whichever method you find easiest but remember that it is easy to save the results of any function for later use.
 
 We can explore the correlation between two variables using the \texttt{cor()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1322,8 +1166,6 @@ We can explore the correlation between two variables using the \texttt{cor()} fu
 
 or by using a scatter plot:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{plot}\NormalTok{(IQ, WT)}
@@ -1332,11 +1174,7 @@ or by using a scatter plot:
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-54-1} \end{center}
 
-~
-
 and by a formal test:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1361,8 +1199,6 @@ and by a formal test:
 \newpage
 
 With some functions you can pass an entire data.frame rather than a list of variables:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1400,8 +1236,6 @@ With some functions you can pass an entire data.frame rather than a list of vari
 
 The output can be a little confusing particularly if it includes categorical or record identifying variables. To avoid this we can create a new object that contains only the columns we are interested in using the column binding \texttt{cbind()} function:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{newfem }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(AGE, IQ, WT)}
@@ -1421,11 +1255,7 @@ The output can be a little confusing particularly if it includes categorical or 
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-61-1} \end{center}
 
-~
-
 When we have finished with the \texttt{newfem} object we can delete it:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1433,11 +1263,7 @@ When we have finished with the \texttt{newfem} object we can delete it:
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 There was no real need to create the \texttt{newfem} object as we could have fed the output of the \texttt{cbind()} function directly to the \texttt{cor()} or \texttt{pairs()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1457,13 +1283,9 @@ There was no real need to create the \texttt{newfem} object as we could have fed
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-65-1} \end{center}
 
-~
-
 It is, however, easier to work with the \texttt{newfem} object rather than having to retype the \texttt{cbind()} function. This is particularly true if you wanted to continue with an analysis of just the three variables.
 
 The relationship between \texttt{AGE} and \texttt{WT} can be plotted using the \texttt{plot()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1476,8 +1298,6 @@ The relationship between \texttt{AGE} and \texttt{WT} can be plotted using the \
 \newpage
 
 And tested using the \texttt{cor()} and \texttt{cor.test()} functions:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1513,8 +1333,6 @@ And tested using the \texttt{cor()} and \texttt{cor.test()} functions:
 
 Or by using the linear modelling \texttt{lm()} function:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{summary}\NormalTok{(}\FunctionTok{lm}\NormalTok{(WT }\SpecialCharTok{\textasciitilde{}}\NormalTok{ AGE))}
@@ -1543,13 +1361,9 @@ Or by using the linear modelling \texttt{lm()} function:
 ## F-statistic: 21.94 on 1 and 105 DF,  p-value: 8.457e-06
 \end{verbatim}
 
-~
-
 We use the \texttt{summary()} function here to extract summary information from the output of the \texttt{lm()} function.
 
 It is often more useful to use \texttt{lm()} to create an object:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1560,8 +1374,6 @@ It is often more useful to use \texttt{lm()} to create an object:
 \newpage
 
 And use the output in other functions:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1602,15 +1414,11 @@ And use the output in other functions:
 
 \begin{center}\includegraphics{seychelles-statistics-handbook_files/figure-latex/unnamed-chunk-71-1} \end{center}
 
-~
-
 In this case we are passing the intercept and slope information held in the \texttt{fem.lm} object to the \texttt{abline()} function which draws a regression line. The \texttt{abline()} function adds to an existing plot. This means that you need to keep the scatter plot of \texttt{AGE} and \texttt{WT} open before issuing the \texttt{abline()} function call.
 
 \newpage
 
 A useful function to apply to the \texttt{fem.lm} object is \texttt{plot()} which produces diagnostic plots of the linear model:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1630,19 +1438,13 @@ A useful function to apply to the \texttt{fem.lm} object is \texttt{plot()} whic
 
 Objects created by the \texttt{lm()} function (or any of the modelling functions) can use up a lot of memory so we should remove them when we no longer need them:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{rm}\NormalTok{(fem.lm)}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 It might be interesting to see whether a similar relationship exists between \texttt{AGE} and \texttt{WT} for those who have and have not considered suicide. This can be done using the \texttt{coplot()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1661,8 +1463,6 @@ It might be interesting to see whether a similar relationship exists between \te
 
 The two plots looks similar. We could also use \texttt{coplot()} to investigate the relationship between \texttt{AGE} and \texttt{WT} for categories of both \texttt{LIFE} and \texttt{SEX}:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{coplot}\NormalTok{(WT }\SpecialCharTok{\textasciitilde{}}\NormalTok{ AGE }\SpecialCharTok{|} \FunctionTok{as.factor}\NormalTok{(LIFE) }\SpecialCharTok{*} \FunctionTok{as.factor}\NormalTok{(SEX))}
@@ -1676,16 +1476,12 @@ The two plots looks similar. We could also use \texttt{coplot()} to investigate 
 ##  Missing rows: 12, 17, 21, 22, 31, 43, 44, 45, 66, 69, 81, 101, 104, 105, 114, 115
 \end{verbatim}
 
-~
-
 although the numbers are too small for this to be useful here.
 
 We used the \texttt{as.factor()} function with the \texttt{coplot()} function to ensure that \texttt{R} was aware that the \texttt{LIFE}
 and \texttt{SEX} columns hold categorical data.
 
 We can check the way variables are stored using the \texttt{data.class()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1701,8 +1497,6 @@ We can check the way variables are stored using the \texttt{data.class()} functi
 
 We can `apply' this function to all columns in a data.frame using the \texttt{sapply()} function:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{sapply}\NormalTok{(fem, data.class)}
@@ -1715,8 +1509,6 @@ We can `apply' this function to all columns in a data.frame using the \texttt{sa
 ##        WT 
 ## "numeric"
 \end{verbatim}
-
-~
 
 The \texttt{sapply()} function is part of a group of functions that apply a specified function to data objects:
 
@@ -1743,8 +1535,6 @@ Related functions are \texttt{aggregate()} which compute summary statistics for 
 
 The parameters of most \texttt{R} functions have default values. These are usually the most used and most useful parameter values for each function. The \texttt{cor.test()} function, for example, calculates \emph{Pearson's product moment correlation coefficient} by default. This is an appropriate measure for data from a bivariate normal distribution. The \texttt{DEP} and \texttt{ANX} variables contain ordered data. An appropriate measure of correlation between \texttt{DEP} and \texttt{ANX} is \emph{Kendall's tau}. This can be obtained using:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{cor.test}\NormalTok{(DEP, ANX, }\AttributeTok{method =} \StringTok{"kendall"}\NormalTok{)}
@@ -1763,11 +1553,7 @@ The parameters of most \texttt{R} functions have default values. These are usual
 ## 0.4950723
 \end{verbatim}
 
-~
-
 Before we finish we should save the \texttt{fem} data.frame so that next time we want to use it we will not have to bother with recoding the missing values to the special \texttt{NA} value. This is done with the \texttt{write.table()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1775,19 +1561,13 @@ Before we finish we should save the \texttt{fem} data.frame so that next time we
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Everything in \texttt{R} is either a function or an object. Even the command to quit \texttt{R} is a function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{q}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-~
 
 When you call the \texttt{q()} function you will be asked if you want to save the workspace image. If you save the workspace image then all of the objects and functions currently available to you will be saved. These will then be automatically restored the next time you start \texttt{R} in the current working directory.
 
@@ -1815,19 +1595,13 @@ In this exercise we will explore how to manipulate \texttt{R} objects and how to
 
 Before we go any further we should start \texttt{R} and retrieve a dataset:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{salex }\OtherTok{\textless{}{-}} \FunctionTok{read.table}\NormalTok{(}\StringTok{"data/salex.dat"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{na.strings =} \StringTok{"9"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Missing values are coded as 9 throughout this dataset so we can use the \texttt{na.strings} parameter of the \texttt{read.table()} function to replace all 9's with the special \texttt{NA} code when we retrieve the dataset. Check that this works by examining the \texttt{salex} data.frame:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1858,8 +1632,6 @@ Missing values are coded as 9 throughout this dataset so we can use the \texttt{
 ##  [7] "PORKPIE"   "PASTA"     "RICE"      "LETTUCE"   "TOMATO"    "COLESLAW" 
 ## [13] "CRISPS"    "PEACHCAKE" "CHOCOLATE" "FRUIT"     "TRIFLE"    "ALMONDS"
 \end{verbatim}
-
-~
 
 This data comes from a food-borne outbreak. On Saturday 17th October 1992, eighty-two people attended a buffet meal at a sports club. Within fourteen to twenty-four hours, fifty-one of the participants developed diarrhoea, with nausea, vomiting, abdominal pain and fever.
 
@@ -1897,21 +1669,15 @@ Data is available for seventy-seven of the eighty-two people who attended the sp
 
 We can use the \texttt{attach()} function to make it easier to access our data:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{attach}\NormalTok{(salex)}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 The two-by-two table is a basic epidemiological tool. In analysing data from a food-borne outbreak collected as a retrospective cohort study, for example, we would tabulate each exposure (suspect foodstuffs) against the outcome (illness) and calculate risk ratios and confidence intervals. \texttt{R} has no explicit function to calculate risk ratios from two-by-two tables but we can easily write one ourselves.
 
 The first step in writing such a function would be to create the two-by-two table. This can be done with the \texttt{table()} function. We will use a table of \texttt{HAM} by \texttt{ILL} as an illustration:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1919,11 +1685,7 @@ The first step in writing such a function would be to create the two-by-two tabl
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 This command produces the following output:
-
-~
 
 \begin{verbatim}
 ##    ILL
@@ -1932,11 +1694,7 @@ This command produces the following output:
 ##   2  5  9
 \end{verbatim}
 
-~
-
 We can manipulate the output directly but it is easier if we instruct \texttt{R} to save the output of the \texttt{table()} function in an object:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1947,8 +1705,6 @@ We can manipulate the output directly but it is easier if we instruct \texttt{R}
 \newpage
 
 The \texttt{tab} object contains the output of the \texttt{table()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1963,13 +1719,9 @@ The \texttt{tab} object contains the output of the \texttt{table()} function:
 ##   2  5  9
 \end{verbatim}
 
-~
-
 As it is stored in an object we can examine its contents on an item by item basis.
 
 The \texttt{tab} object is an object of class \texttt{table}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1981,11 +1733,7 @@ The \texttt{tab} object is an object of class \texttt{table}:
 ## [1] "table"
 \end{verbatim}
 
-~
-
 We can extract data from a table object by using indices or row and column co-ordinates:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2007,11 +1755,7 @@ We can extract data from a table object by using indices or row and column co-or
 ## [1] 5
 \end{verbatim}
 
-~
-
 The numbers in the square brackets refer to the \textbf{\emph{position}} (as row and column co-ordinates) of the data item in the table \textbf{\emph{not}} the \textbf{\emph{values}} of the variables. We can extract data using the values of the row and column variables by enclosing the index values in double quotes (``). For example:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2027,8 +1771,6 @@ The numbers in the square brackets refer to the \textbf{\emph{position}} (as row
 
 The two methods of extracting data may be combined. For example:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{tab[}\DecValTok{1}\NormalTok{,}\StringTok{"1"}\NormalTok{]}
@@ -2039,11 +1781,7 @@ The two methods of extracting data may be combined. For example:
 ## [1] 46
 \end{verbatim}
 
-~
-
 We can calculate a risk ratio using the extracted data:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2051,23 +1789,15 @@ We can calculate a risk ratio using the extracted data:
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Which returns a risk ratio of
-
-~
 
 \begin{verbatim}
 ## [1] 2.044444
 \end{verbatim}
 
-~
-
 This is a tedious calculation to have to type in every time you need to calculate a risk ratio from a two-by-two table. It would be better to have a function that calculates and displays the risk ratio automatically. Fortunately, \texttt{R} allows us to do just that.
 
 The \texttt{function()} function allows us to create new functions in \texttt{R}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2075,19 +1805,13 @@ The \texttt{function()} function allows us to create new functions in \texttt{R}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 This creates an empty function called \texttt{tab2by2} that expects two parameters called \texttt{exposure} and \texttt{outcome}. We could type the whole function in at the \texttt{R} command prompt but it is easier to use a text editor:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{fix}\NormalTok{(tab2by2)}
 \end{Highlighting}
 \end{Shaded}
-
-~
 
 This will start an editor with the empty \texttt{tab2by2()} function already loaded. We can now edit this function to make it do something useful:
 
@@ -2108,8 +1832,6 @@ This will start an editor with the empty \texttt{tab2by2()} function already loa
 \NormalTok{  \}}
 \end{Highlighting}
 \end{Shaded}
-
-~
 
 Once you have made the changes shown above, check your work, save the file, and quit the editor.
 Before proceeding we should examine the \texttt{tab2by2()} function to make sure we understand what the function will do:
@@ -2133,8 +1855,6 @@ Before proceeding we should examine the \texttt{tab2by2()} function to make sure
 
 Let's try the \texttt{tab2by2()} function with our test data:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{tab2by2}\NormalTok{(HAM, ILL)}
@@ -2149,13 +1869,9 @@ Let's try the \texttt{tab2by2()} function with our test data:
 ## [1] 2.044444
 \end{verbatim}
 
-~
-
 The \texttt{tab2by2()} function displays a table of \texttt{HAM} by \texttt{ILL} followed by the risk ratio calculated from the data in the table.
 
 Try producing another table:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2171,11 +1887,7 @@ Try producing another table:
 ## [1] 1.682692
 \end{verbatim}
 
-~
-
 Have a look at the \texttt{R} objects available to you:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2187,15 +1899,11 @@ Have a look at the \texttt{R} objects available to you:
 ## [1] "fem"     "salex"   "tab"     "tab2by2"
 \end{verbatim}
 
-~
-
 Note that there are no \texttt{a}, \texttt{b}, \texttt{c}, \texttt{d}, or \texttt{rr} objects.
 
 \newpage
 
 Examine the \texttt{tab} object:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2210,8 +1918,6 @@ Examine the \texttt{tab} object:
 ##   2  5  9
 \end{verbatim}
 
-~
-
 This is the table of \texttt{HAM} by \texttt{ILL} that you created earlier \textbf{\emph{not}} the table of \texttt{PASTA} by \texttt{ILL} that was created by the \texttt{tab2by2()} function.
 
 The \texttt{tab}, \texttt{a}, \texttt{b}, \texttt{c}, \texttt{d}, and \texttt{rr} objects in the \texttt{tab2by2()} function are local to that function and do not change anything outside of that function. This means that the \texttt{tab} object inside the function is independent of any object of the same name outside of the function.
@@ -2220,8 +1926,6 @@ When a function completes its work, all of the objects that are local to that fu
 
 Just to prove that \texttt{tab} in the \texttt{tab2by2()} function exists only in the \texttt{tab2by2()} function we can delete the tab object from the \texttt{R} workspace:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{rm}\NormalTok{(tab)}
@@ -2229,8 +1933,6 @@ Just to prove that \texttt{tab} in the \texttt{tab2by2()} function exists only i
 \end{Shaded}
 
 Now try another call to the \texttt{tab2by2()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2250,8 +1952,6 @@ Now try another call to the \texttt{tab2by2()} function:
 
 Now list the \texttt{R} objects available to you:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{ls}\NormalTok{()}
@@ -2262,13 +1962,9 @@ Now list the \texttt{R} objects available to you:
 ## [1] "fem"     "salex"   "tab2by2"
 \end{verbatim}
 
-~
-
 Note that there are no \texttt{tab}, \texttt{a}, \texttt{b}, \texttt{c}, \texttt{d}, or \texttt{rr} objects.
 
 The \texttt{tab2by2()} function is very limited. It only displays a table and calculates and displays a simple ratio. A more useful function would also calculate and display a confidence interval for the risk ratio. This is what we will do now. Use the \texttt{fix()} function to edit the \texttt{tab2by2()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2276,11 +1972,7 @@ The \texttt{tab2by2()} function is very limited. It only displays a table and ca
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 We can now edit this function to calculate and display a 95\% confidence interval for the risk ratio.
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2306,19 +1998,13 @@ We can now edit this function to calculate and display a 95\% confidence interva
 
 Once you have made the changes shown above, check your work, save the file, and quit the editor. We should test our revised function:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{tab2by2}\NormalTok{(EGGS, ILL)}
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 which produces the following output:
-
-~
 
 \begin{verbatim}
 ##         outcome
@@ -2330,11 +2016,7 @@ which produces the following output:
 ## [1] 4.38044
 \end{verbatim}
 
-~
-
 The function works but the output could be improved. Use the \texttt{fix()} function to edit the \texttt{tab2by2()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2355,15 +2037,11 @@ The function works but the output could be improved. Use the \texttt{fix()} func
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Once you have made the changes shown above, save the file and quit the editor.
 
 \newpage
 
 Now we can test our function again:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2371,11 +2049,7 @@ Now we can test our function again:
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Which produces the following output:
-
-~
 
 \begin{verbatim}
 ##         outcome
@@ -2387,11 +2061,7 @@ Which produces the following output:
 ## 95% CI : 1.553564 4.38044
 \end{verbatim}
 
-~
-
 The \texttt{tab2by2()} function displays output but does not behave like a standard \texttt{R} function in the sense that you cannot save the results of the \texttt{tab2by2()} function into an object:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2409,11 +2079,7 @@ The \texttt{tab2by2()} function displays output but does not behave like a stand
 ## 95% CI : 1.553564 4.38044
 \end{verbatim}
 
-~
-
 displays output but does not save anything in the \texttt{test2by2} object:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2433,8 +2099,6 @@ We will now add the calculation of the odds ratio and its 95\% confidence interv
 
 There are two ways of doing this. We could either calculate the odds ratio from the table and use (e.g.) the method of Woolf to calculate the confidence interval:
 
-~
-
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{or }\OtherTok{\textless{}{-}}\NormalTok{ (a }\SpecialCharTok{/}\NormalTok{ b) }\SpecialCharTok{/}\NormalTok{ (c }\SpecialCharTok{/}\NormalTok{ d)}
@@ -2446,11 +2110,7 @@ There are two ways of doing this. We could either calculate the odds ratio from 
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 or use the output of the \texttt{fisher.test()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2460,13 +2120,9 @@ or use the output of the \texttt{fisher.test()} function:
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Note that we can refer to components of a function's output using the same syntax as when we refer to columns in a data.frame (e.g.~\texttt{ft\$estimate} to examine the estimate of the odds ratio from the \texttt{fisher.test()} function stored in the object \texttt{ft}).
 
 The names of elements in the output of a standard function such as \texttt{fisher.test()} can be found in the documentation or the help system. For example:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2479,8 +2135,6 @@ The names of elements in the output of a standard function such as \texttt{fishe
 Output elements are listed under the \texttt{Value} heading.
 
 Revise the \texttt{tab2by2()} function to include the calculation of the odds ratio and the 95\% confidence interval. The revised function will look something like this:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2514,8 +2168,6 @@ Revise the \texttt{tab2by2()} function to include the calculation of the odds ra
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 Once you have made the changes shown above, check your work, save the file, and quit the editor.
 
 \newpage
@@ -2523,8 +2175,6 @@ Once you have made the changes shown above, check your work, save the file, and 
 Test the \texttt{tab2by2()} function when you have added the calculation of the odds ratio and its 95\% confidence interval.
 
 Now that we have a function that will calculate risk ratios and odds ratios with confidence intervals from a two- by-two table we can use it to analyse the \texttt{salex} data:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2837,13 +2487,9 @@ Now that we have a function that will calculate risk ratios and odds ratios with
 ## 95% CI            : 0.06170211 4.141891
 \end{verbatim}
 
-~
-
 Make a note of any positive associations (i.e.~with a risk ratio \textgreater{} 1 with a 95\% confidence intervals that does not include one). We will use these for the next exercise when we will use logistic regression to analyse this data.
 
 Save the \texttt{tab2by2()} function:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2851,19 +2497,13 @@ Save the \texttt{tab2by2()} function:
 \end{Highlighting}
 \end{Shaded}
 
-~
-
 We can now quit \texttt{R}:
-
-~
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \FunctionTok{q}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
-
-~
 
 For this exercise there is no need to save the workspace image so click the \textbf{No} or \textbf{Don't Save} button (GUI) or enter \texttt{n} when prompted to save the workspace image (terminal).
 
